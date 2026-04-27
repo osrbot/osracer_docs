@@ -1,15 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["node", "vitepress/client"],
     "strict": true,
     "jsx": "preserve",
-    "resolveJsonModule": true,
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vitepress/client"]
+    "allowJs": true,
+    "noEmit": true,
+    "skipLibCheck": true
   },
-  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.vue", "scripts/**/*.mjs"]
+  "include": [
+    "docs/**/*.ts",
+    "docs/**/*.vue",
+    "docs/.vitepress/**/*.ts",
+    "docs/.vitepress/**/*.vue",
+    "scripts/**/*.mjs"
+  ],
+  "exclude": ["node_modules", "docs/.vitepress/cache", "docs/.vitepress/dist"]
 }
