@@ -10,9 +10,9 @@
     "typecheck": "vue-tsc --noEmit",
     "lint": "npm run lint:md && npm run lint:format && npm run lint:config",
     "lint:md": "markdownlint-cli2 \"docs/**/*.md\" \"*.md\"",
-    "lint:format": "prettier --check .",
+    "lint:format": "prettier --check \"**/*.{js,ts,vue,json,yml,yaml}\"",
     "lint:config": "eslint .",
-    "format": "prettier --write .",
+    "format": "prettier --write \"**/*.{js,ts,vue,json,yml,yaml}\"",
     "generate:changelog": "node scripts/generate-changelog.mjs"
   },
   "dependencies": {
