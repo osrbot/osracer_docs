@@ -25,5 +25,9 @@ watch(() => props.code, renderDiagram)
 </script>
 
 <template>
-  <div ref="container" class="mermaid-wrapper" aria-label="Architecture diagram"></div>
+  <div
+    ref="container"
+    class="mermaid-wrapper"
+    aria-label="Architecture diagram"
+  />
 </template>
