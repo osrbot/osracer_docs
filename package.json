@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "latest",
+    "@types/node": "latest",
     "eslint": "latest",
     "eslint-plugin-vue": "latest",
     "globals": "latest",
@@ -33,6 +34,6 @@
     "vue-tsc": "latest"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   }
 }
