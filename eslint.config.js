@@ -20,6 +20,9 @@ export default [
         ...globals.browser,
         ...globals.node
       }
+    },
+    rules: {
+      'vue/multi-word-component-names': 'off'
     }
   },
   {
@@ -31,9 +34,6 @@ export default [
         ecmaVersion: 'latest',
         sourceType: 'module'
       }
-    },
-    rules: {
-      'vue/multi-word-component-names': 'off'
     }
   }
 ]
