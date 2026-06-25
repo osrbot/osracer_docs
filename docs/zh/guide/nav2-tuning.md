@@ -8,7 +8,7 @@
 2. 先低速验证，再提高速度上限。
 3. 先验证 TF 和里程计，再修改规划器参数。
 4. 每次只修改一组参数。
-5. 每次测试都记录车型、地图、planner 和结果。
+5. 每次测试都记录机器人配置、地图、planner 和结果。
 
 ## 调参前检查
 
@@ -51,9 +51,9 @@ ros2 launch osracer_debug debug_lidar.launch.py
 
 在 RViz 中确认 scan 能和墙面、障碍物对齐。
 
-### Footprint
+### 出厂几何
 
-机器人 footprint 应覆盖真实车体。footprint 太小会增加碰撞风险，太大则可能导致机器人无法通过窄通道。
+标准交付 OSRacer 的车体几何已经配置好。用户应通过 RViz 和 costmap 检查确认行为正确。只有在实际改动车体硬件后，才需要修改几何相关设置。
 
 ## TEB 调参
 
@@ -74,7 +74,7 @@ TEB 是 OSRacer 推荐的局部规划器，因为它可以表达 wheelbase 和 t
 | --- | --- |
 | `wheelbase` | 匹配车辆模型中前后轴参考点的真实距离 |
 | `min_turning_radius` | 匹配车辆安全可行的最小转弯半径 |
-| `footprint_model` | 使用能反映真实车体的 line 或 polygon 模型 |
+| 几何模型 | 保持交付版 OSRacer 模型，除非硬件已经被实际改动 |
 
 ### 速度和加速度
 
@@ -137,13 +137,13 @@ DWB 适合作为基础局部规划器。它通常更容易理解，但对 Ackerm
 
 | 参数 | 作用 |
 | --- | --- |
-| `footprint` | 定义机器人碰撞形状 |
+| 机器人几何 | 定义 costmap 使用的碰撞范围 |
 | `inflation_radius` | 控制障碍物影响范围 |
 | `cost_scaling_factor` | 控制膨胀代价衰减速度 |
 | `obstacle_layer` | 将传感器障碍物写入 costmap |
 | `voxel_layer` | 适合 3D 或高度相关障碍物数据 |
 
-一个简单原则：先调 footprint 和 inflation，再提高最高速度。
+一个简单原则：先确认几何和 inflation，再提高最高速度。
 
 ## 测试顺序
 
@@ -165,7 +165,7 @@ DWB 适合作为基础局部规划器。它通常更容易理解，但对 Ackerm
 ## 调参记录
 
 - 日期：
-- 车型：
+- 机器人配置：
 - 地图：
 - Planner：
 - 参数文件：

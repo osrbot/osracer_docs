@@ -10,7 +10,7 @@ This changes how navigation should be configured:
 
 - the planner must respect a minimum turning radius;
 - recovery behaviors cannot assume in-place rotation;
-- footprint and wheelbase must match the real robot;
+- the delivered geometry and wheelbase settings should stay consistent;
 - velocity limits should be tuned with steering feasibility in mind;
 - narrow spaces may require reversing or replanning instead of spinning.
 
@@ -18,7 +18,7 @@ This changes how navigation should be configured:
 
 Many Nav2 examples are tuned for small differential-drive platforms. Those defaults often assume:
 
-- small footprint;
+- compact robot geometry;
 - low speed;
 - in-place rotation;
 - simple circular or near-circular geometry;
@@ -36,16 +36,14 @@ OSRacer needs car-like tuning. Using differential-drive defaults may cause slow 
 
 `min_turning_radius` defines the smallest feasible turning radius. A smaller value makes the planner more aggressive, but if it is smaller than the real vehicle can achieve, the robot may cut corners, oscillate, or fail near obstacles.
 
-### Footprint
+### Factory geometry
 
-The footprint is the collision shape used by costmaps and planners.
+The standard OSRacer geometry is configured before delivery. For normal
+bringup, SLAM, and navigation, users should verify RViz and costmap behavior
+rather than editing vehicle geometry files.
 
-A good footprint should:
-
-- cover the real chassis;
-- include important protrusions;
-- match the selected `base_link` convention;
-- be tested in RViz against real obstacles.
+Change geometry-related settings only after a physical modification such as a
+new sensor bracket, different wheel size, or custom body shell.
 
 ## Command conversion
 
@@ -85,10 +83,10 @@ Preferred recovery options are:
 
 ## Testing checklist
 
-Before using a new Ackermann navigation profile, verify:
+Before using a new Ackermann navigation setup, verify:
 
-- the footprint matches the real chassis;
-- `wheelbase` matches the current vehicle model;
+- the standard robot model is connected in RViz;
+- the delivered wheelbase setting has not been accidentally changed;
 - `min_turning_radius` is physically reachable;
 - `cmd_vel` conversion does not explode near zero speed;
 - local paths are feasible in RViz;
@@ -103,8 +101,8 @@ Before using a new Ackermann navigation profile, verify:
 | Robot oscillates near goal | Goal tolerance too strict or local planner over-constrained |
 | Robot drives too slowly | Velocity limits too conservative or costmap too inflated |
 | Robot tries invalid recovery | Differential-drive recovery behavior still enabled |
-| Robot clips obstacles | Footprint too small or TF offset wrong |
+| Robot clips obstacles | Costmap too aggressive or TF offset wrong |
 
 ## Design rule
 
-Treat OSRacer as a car first, and a generic Nav2 robot second. Navigation profiles should be built around real chassis geometry, not copied directly from differential-drive examples.
+Treat OSRacer as a car first, and a generic Nav2 robot second. Navigation settings should start from the delivered OSRacer configuration, not from differential-drive examples.

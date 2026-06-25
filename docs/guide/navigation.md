@@ -35,7 +35,7 @@ ros2 launch osracer_navigation bringup_launch.py slam:=True planner:=dwb
 
 1. Confirm TF and localization first.
 2. Confirm `odometry/filtered` is stable.
-3. Tune robot footprint and inflation radius.
+3. Verify the delivered robot geometry, then tune costmap inflation.
 4. Set safe velocity and acceleration limits.
 5. Tune local planner constraints for Ackermann motion.
 6. Test recovery behavior in a controlled area.
@@ -46,7 +46,7 @@ Keep navigation parameter files small and named by scenario. For example, use se
 
 Every navigation profile change should record:
 
-- robot model;
+- robot setup;
 - map or test field;
 - planner name;
 - changed parameters;

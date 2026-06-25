@@ -8,7 +8,7 @@ This page provides a structured tuning workflow for OSRacer navigation.
 2. Tune at low speed before increasing speed limits.
 3. Verify TF and odometry before changing planner parameters.
 4. Change one group of parameters at a time.
-5. Record every test with robot model, map, planner, and result.
+5. Record every test with robot setup, map, planner, and result.
 
 ## Pre-flight checks
 
@@ -51,9 +51,11 @@ ros2 launch osracer_debug debug_lidar.launch.py
 
 In RViz, verify that the scan aligns with walls and obstacles.
 
-### Footprint
+### Factory geometry
 
-The robot footprint should cover the real chassis shape. A footprint that is too small can cause collision risk. A footprint that is too large can prevent the robot from passing narrow spaces.
+For a standard delivered OSRacer, the robot geometry is already configured. Use
+RViz and costmap checks to confirm it behaves correctly. Only edit geometry
+settings after a physical hardware change.
 
 ## TEB tuning
 
@@ -74,7 +76,7 @@ Tune TEB in this order:
 | --- | --- |
 | `wheelbase` | Match the real distance between front and rear axle references used by the vehicle model |
 | `min_turning_radius` | Match the smallest safe turning radius of the car |
-| `footprint_model` | Prefer a line or polygon model that reflects the real chassis |
+| geometry model | Keep the delivered OSRacer model unless the hardware was physically changed |
 
 ### Speed and acceleration
 
@@ -137,13 +139,13 @@ Costmaps often explain navigation behavior better than the planner itself.
 
 | Parameter | Effect |
 | --- | --- |
-| `footprint` | Defines the robot collision shape |
+| robot geometry | Defines the collision envelope used by costmaps |
 | `inflation_radius` | Controls how far obstacles influence paths |
 | `cost_scaling_factor` | Controls how quickly inflated cost decays |
 | `obstacle_layer` | Inserts sensor obstacles into the costmap |
 | `voxel_layer` | Useful for 3D or height-aware obstacle data |
 
-A good rule is to tune footprint and inflation before increasing maximum speed.
+A good rule is to verify geometry and inflation before increasing maximum speed.
 
 ## Test sequence
 
@@ -165,7 +167,7 @@ Copy this template for each test.
 ## Tuning Record
 
 - Date:
-- Robot model:
+- Robot setup:
 - Map:
 - Planner:
 - Params file:

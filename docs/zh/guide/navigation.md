@@ -35,7 +35,7 @@ ros2 launch osracer_navigation bringup_launch.py slam:=True planner:=dwb
 
 1. 先确认 TF 和定位。
 2. 确认 `odometry/filtered` 稳定。
-3. 调整机器人 footprint 和 inflation radius。
+3. 确认出厂车体几何，再调整 costmap inflation。
 4. 设置安全的速度和加速度限制。
 5. 根据 Ackermann 运动约束调整局部规划器。
 6. 在受控区域测试恢复行为。
@@ -46,7 +46,7 @@ ros2 launch osracer_navigation bringup_launch.py slam:=True planner:=dwb
 
 每次修改导航 profile，都应该记录：
 
-- 车型；
+- 机器人配置；
 - 地图或测试场地；
 - planner 名称；
 - 改动参数；

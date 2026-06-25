@@ -7,14 +7,14 @@
 - 文档化 Jetson Orin Nano 安装。
 - 文档化 Nav2 导航提速优化。
 - 完善调试指南。
-- 文档化车型 profile 和 footprint。
+- 文档化出厂车型设置和客户验证检查。
 - 文档化 UDEV 修复。
 
 ## 中期
 
 - 在客户工具中更清晰地展示底盘重连状态。
 - 将底盘状态接入 ROS diagnostics topic。
-- 完善多车型 profile 管理。
+- 完善按场景划分的导航配置管理。
 
 ## 长期
 
