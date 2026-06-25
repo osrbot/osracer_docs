@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'OSRacer Docs',
-  description: 'Developer documentation for OSRacer',
+  description: 'Customer guide for OSRacer bringup, demo, SLAM, navigation, and troubleshooting.',
   base: '/osracer_docs/',
   cleanUrls: true,
   lastUpdated: true,
@@ -238,6 +238,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    logo: '/osracer-mark.svg',
     siteTitle: 'OSRacer',
     search: { provider: 'local' },
     socialLinks: [{ icon: 'github', link: 'https://github.com/osrbot/osracer' }],

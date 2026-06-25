@@ -12,9 +12,8 @@
 
 ## 中期
 
-- 增加底盘驱动重连机制。
-- 增加串口心跳和状态上报。
-- 增加 ROS diagnostics topic。
+- 在客户工具中更清晰地展示底盘重连状态。
+- 将底盘状态接入 ROS diagnostics topic。
 - 完善多车型 profile 管理。
 
 ## 长期

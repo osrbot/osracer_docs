@@ -12,9 +12,8 @@ This roadmap turns known internal issues into public development directions.
 
 ## Mid term
 
-- Add chassis driver reconnect behavior.
-- Add serial heartbeat and status reporting.
-- Add ROS diagnostics topics.
+- Improve chassis reconnect status visibility in customer tools.
+- Surface chassis status in ROS diagnostics topics.
 - Improve multi-vehicle profile management.
 
 ## Long term
