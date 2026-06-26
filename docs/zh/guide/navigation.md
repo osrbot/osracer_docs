@@ -1,21 +1,24 @@
 # 导航
 
-导航层基于 Nav2，使用地图、定位、代价地图、规划器和控制器参数完成路径规划与跟踪。
+OSRacer 导航围绕真实阿克曼转向底盘构建。需要展示自主行驶、对比 planner，或在教室、实验室、走廊、测试场地上验证科研改动时，应先看本页。
 
-## 常见模式
+## OSRacer 能展示什么
 
-- 在已有地图上导航。
-- 开发阶段同时运行 SLAM 和导航。
-- 对比 TEB 和 DWB 局部规划效果。
+- 基于 Nav2 的地图导航。
+- 面向阿克曼底盘的 TEB 提速导航 profile。
+- DWB 作为更简单的对照和调试 baseline。
+- 场地早期部署时同时运行 SLAM 和导航。
+- 面向教室、实验室、走廊和赛道的场景化 profile。
 
 ## 推荐阅读路径
 
 如果你刚开始理解 OSRacer 导航，建议按顺序阅读：
 
-1. [Ackermann 导航](./ackermann-navigation.md) — 理解 OSRacer 和差速机器人的不同。
-2. [Nav2 导航提速优化](./nav2-speed-optimization.md) — 理解关键指令链路和 planner 改动。
-3. [Nav2 调参](./nav2-tuning.md) — 安全地调整速度、加速度、costmap 和 planner 参数。
-4. [Nav2 故障排查](../troubleshooting/nav2.md) — 排查常见运行时问题。
+1. [SLAM 建图](./slam.md) — 先创建并保存导航使用的地图。
+2. [Nav2 导航提速优化](./nav2-speed-optimization.md) — 理解提速后的指令链路、planner profile 和融合里程计路径。
+3. [Ackermann 导航](./ackermann-navigation.md) — 理解 OSRacer 和差速机器人的不同。
+4. [Nav2 调参](./nav2-tuning.md) — 默认 profile 跑通后，再调整速度、加速度、costmap 和 planner 参数。
+5. [Nav2 故障排查](../troubleshooting/nav2.md) — 只有导航行为异常时再看。
 
 ## Planner 选择
 
@@ -31,14 +34,14 @@ ros2 launch osracer_navigation bringup_launch.py slam:=True planner:=teb
 ros2 launch osracer_navigation bringup_launch.py slam:=True planner:=dwb
 ```
 
-## 调参顺序
+## 客户优先关注的性能
 
-1. 先确认 TF 和定位。
-2. 确认 `odometry/filtered` 稳定。
-3. 确认出厂车体几何，再调整 costmap inflation。
-4. 设置安全的速度和加速度限制。
-5. 根据 Ackermann 运动约束调整局部规划器。
-6. 在受控区域测试恢复行为。
+1. 目标场地地图可复用。
+2. 多次运行时定位和融合里程计稳定。
+3. Planner 行为符合阿克曼转向约束。
+4. 通过 costmap 和 inflation 保持平滑避障。
+5. 低速导航稳定后，再逐步提高速度和加速度。
+6. 按场景和 planner profile 记录可复现结果。
 
 ## 开发建议
 

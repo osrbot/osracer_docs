@@ -2,7 +2,8 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'OSRacer Docs',
-  description: 'Customer guide for OSRacer bringup, demo, SLAM, navigation, and troubleshooting.',
+  description:
+    'Customer guide for OSRacer racing, SLAM mapping, Nav2 navigation, bringup, and troubleshooting.',
   base: '/osracer_docs/',
   cleanUrls: true,
   lastUpdated: true,
@@ -34,34 +35,10 @@ export default defineConfig({
         sidebar: {
           '/guide/': [
             {
-              text: 'Start Here',
+              text: 'Core Capabilities',
               items: [
-                { text: 'Getting Started', link: '/guide/getting-started' },
-                {
-                  text: 'Jetson Orin Nano Setup',
-                  link: '/guide/jetson-orin-nano-setup'
-                },
-                { text: 'Architecture', link: '/guide/architecture' },
-                { text: 'Bringup', link: '/guide/bringup' },
-                { text: 'Debugging', link: '/guide/debugging' }
-              ]
-            },
-            {
-              text: 'Hardware and Sensors',
-              items: [
-                { text: 'Vehicle Profile', link: '/guide/vehicle-profile' },
-                { text: 'Sensors', link: '/guide/sensors' },
-                {
-                  text: 'Camera Calibration',
-                  link: '/guide/camera-calibration'
-                }
-              ]
-            },
-            {
-              text: 'SLAM and Navigation',
-              items: [
-                { text: 'SLAM', link: '/guide/slam' },
                 { text: 'Navigation', link: '/guide/navigation' },
+                { text: 'SLAM', link: '/guide/slam' },
                 {
                   text: 'Nav2 Speed Optimization',
                   link: '/guide/nav2-speed-optimization'
@@ -70,7 +47,31 @@ export default defineConfig({
                 {
                   text: 'Ackermann Navigation',
                   link: '/guide/ackermann-navigation'
-                }
+                },
+                { text: 'Vehicle Profile', link: '/guide/vehicle-profile' }
+              ]
+            },
+            {
+              text: 'Robot Setup',
+              items: [
+                { text: 'Getting Started', link: '/guide/getting-started' },
+                {
+                  text: 'Jetson Orin Nano Setup',
+                  link: '/guide/jetson-orin-nano-setup'
+                },
+                { text: 'Architecture', link: '/guide/architecture' },
+                { text: 'Bringup', link: '/guide/bringup' },
+                { text: 'Sensors', link: '/guide/sensors' }
+              ]
+            },
+            {
+              text: 'Maintenance and Checks',
+              items: [
+                {
+                  text: 'Camera Calibration',
+                  link: '/guide/camera-calibration'
+                },
+                { text: 'Debugging', link: '/guide/debugging' }
               ]
             },
             {
@@ -146,31 +147,10 @@ export default defineConfig({
         sidebar: {
           '/zh/guide/': [
             {
-              text: '入门',
+              text: '核心能力',
               items: [
-                { text: '快速开始', link: '/zh/guide/getting-started' },
-                {
-                  text: 'Jetson Orin Nano 安装',
-                  link: '/zh/guide/jetson-orin-nano-setup'
-                },
-                { text: '系统架构', link: '/zh/guide/architecture' },
-                { text: '整车启动', link: '/zh/guide/bringup' },
-                { text: '调试', link: '/zh/guide/debugging' }
-              ]
-            },
-            {
-              text: '硬件与传感器',
-              items: [
-                { text: '车型 Profile', link: '/zh/guide/vehicle-profile' },
-                { text: '传感器', link: '/zh/guide/sensors' },
-                { text: '相机标定', link: '/zh/guide/camera-calibration' }
-              ]
-            },
-            {
-              text: 'SLAM 与导航',
-              items: [
-                { text: 'SLAM 建图', link: '/zh/guide/slam' },
                 { text: '导航', link: '/zh/guide/navigation' },
+                { text: 'SLAM 建图', link: '/zh/guide/slam' },
                 {
                   text: 'Nav2 导航提速优化',
                   link: '/zh/guide/nav2-speed-optimization'
@@ -179,7 +159,28 @@ export default defineConfig({
                 {
                   text: 'Ackermann 导航',
                   link: '/zh/guide/ackermann-navigation'
-                }
+                },
+                { text: '车型 Profile', link: '/zh/guide/vehicle-profile' }
+              ]
+            },
+            {
+              text: '车端部署',
+              items: [
+                { text: '快速开始', link: '/zh/guide/getting-started' },
+                {
+                  text: 'Jetson Orin Nano 安装',
+                  link: '/zh/guide/jetson-orin-nano-setup'
+                },
+                { text: '系统架构', link: '/zh/guide/architecture' },
+                { text: '整车启动', link: '/zh/guide/bringup' },
+                { text: '传感器', link: '/zh/guide/sensors' }
+              ]
+            },
+            {
+              text: '维护与检查',
+              items: [
+                { text: '相机标定', link: '/zh/guide/camera-calibration' },
+                { text: '调试', link: '/zh/guide/debugging' }
               ]
             },
             {

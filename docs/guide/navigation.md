@@ -1,21 +1,26 @@
 # Navigation
 
-The navigation layer is based on Nav2. It consumes a map, localization, costmaps, planners, and controller parameters.
+OSRacer navigation is built around a real Ackermann steering chassis. Start here
+when you want to show autonomous driving, compare planners, or evaluate research
+changes on a mapped classroom, lab, corridor, or test track.
 
-## Common modes
+## What OSRacer Can Demonstrate
 
-- Navigate on an existing map.
-- Run SLAM and navigation together during development.
-- Compare TEB and DWB local planning behavior.
+- Map-based autonomous navigation with Nav2.
+- Faster Ackermann-oriented navigation with the TEB profile.
+- DWB as a simpler baseline for comparison and debugging.
+- SLAM plus navigation during early site setup.
+- Scenario-based profiles for classrooms, labs, corridors, and race tracks.
 
 ## Recommended reading path
 
 If you are new to OSRacer navigation, read these pages in order:
 
-1. [Ackermann Navigation](./ackermann-navigation.md) — understand why OSRacer is different from differential-drive robots.
-2. [Nav2 Speed Optimization](./nav2-speed-optimization.md) — understand the key command-chain and planner changes.
-3. [Nav2 Tuning](./nav2-tuning.md) — tune velocity, acceleration, costmaps, and planner parameters safely.
-4. [Nav2 Troubleshooting](../troubleshooting/nav2.md) — debug common runtime problems.
+1. [SLAM](./slam.md) — build and save the map used by navigation.
+2. [Nav2 Speed Optimization](./nav2-speed-optimization.md) — understand the faster command chain, planner profile, and fused odometry path.
+3. [Ackermann Navigation](./ackermann-navigation.md) — understand why OSRacer is different from differential-drive robots.
+4. [Nav2 Tuning](./nav2-tuning.md) — tune velocity, acceleration, costmaps, and planner parameters after the default profile works.
+5. [Nav2 Troubleshooting](../troubleshooting/nav2.md) — use only when navigation behavior is abnormal.
 
 ## Planner selection
 
@@ -31,14 +36,14 @@ Use DWB as a simpler baseline or comparison profile:
 ros2 launch osracer_navigation bringup_launch.py slam:=True planner:=dwb
 ```
 
-## Tuning priorities
+## Customer Performance Priorities
 
-1. Confirm TF and localization first.
-2. Confirm `odometry/filtered` is stable.
-3. Verify the delivered robot geometry, then tune costmap inflation.
-4. Set safe velocity and acceleration limits.
-5. Tune local planner constraints for Ackermann motion.
-6. Test recovery behavior in a controlled area.
+1. Reusable maps for the target venue.
+2. Stable localization and fused odometry during repeated runs.
+3. Planner behavior that respects Ackermann steering limits.
+4. Smooth obstacle clearance through costmap and inflation settings.
+5. Safe speed and acceleration increases after low-speed navigation works.
+6. Repeatable results recorded by scenario and planner profile.
 
 ## Development notes
 
